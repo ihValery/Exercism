@@ -1,6 +1,5 @@
 func newScoreBoard() -> [String: Int] {
-   let scoreBoard: [String: Int] = [:]
-   return scoreBoard
+   [:]
 }
 
 func addPlayer(_ scores: inout [String: Int], _ name: String, _ score: Int = 0) {
@@ -12,7 +11,7 @@ func removePlayer(_ scores: inout [String: Int], _ name: String) {
 }
 
 func resetScore(_ scores: inout [String: Int], _ name: String) {
-   if scores.contains(where: { $0.key == name }) {
+   if scores.keys.contains(where: { $0 == name }) {
       scores.updateValue(0, forKey: name)
    }
 }

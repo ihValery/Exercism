@@ -22,8 +22,7 @@ func weirdSort(_ lhs: (String, Double), _ rhs: (String, Double)) -> Bool {
 let sortedConstants = constants.sorted(by: weirdSort)
 
 func newScoreBoard() -> [String: Int] {
-   let scoreBoard: [String: Int] = [:]
-   return scoreBoard
+   [:]
 }
 
 var highScores = newScoreBoard()
@@ -48,8 +47,8 @@ removePlayer(&highScores, "Rose Fanaras")
 // Doesn't alter the dictionary as "Rose Fanaras" is not in the dictionary.
 
 func resetScore(_ scores: inout [String: Int], _ name: String) {
-   if scores.contains(where: { $0.key == name }) {
-      scores[name] = 0
+   if scores.keys.contains(where: { $0 == name }) {
+      scores.updateValue(0, forKey: name)
    }
 }
 
