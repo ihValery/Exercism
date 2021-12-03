@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Timeline
+   version = "3.0">
+   <TimelineItems>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/ihvalery/Exercism/swift/high-score-board/Sources/HighScoreBoard/MyPlayground.playground#CharacterRangeLen=9&amp;CharacterRangeLoc=147&amp;EndingColumnNumber=0&amp;EndingLineNumber=5&amp;StartingColumnNumber=1&amp;StartingLineNumber=4&amp;Timestamp=660220007.212757"
+         lockedSize = "{320, 128}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/ihvalery/Exercism/swift/high-score-board/Sources/HighScoreBoard/MyPlayground.playground#CharacterRangeLen=9&amp;CharacterRangeLoc=206&amp;EndingColumnNumber=0&amp;EndingLineNumber=9&amp;StartingColumnNumber=1&amp;StartingLineNumber=8&amp;Timestamp=660220007.21292"
+         lockedSize = "{309, 128}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+   </TimelineItems>
+</Timeline>
