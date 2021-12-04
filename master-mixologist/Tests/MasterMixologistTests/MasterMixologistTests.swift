@@ -54,7 +54,7 @@ final class MasterMixologistTests: XCTestCase {
   }
 
   func testFinishShift() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let got = finishShift(minutesLeft: 12, remainingOrders: orders)
     let expected = Array(orders.dropFirst(8))
     XCTAssertEqual(
@@ -63,7 +63,7 @@ final class MasterMixologistTests: XCTestCase {
   }
 
   func testFinishShiftJustRunOver() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let got = finishShift(minutesLeft: 30, remainingOrders: orders)
     let expected: [[String]] = []
     XCTAssertEqual(
@@ -72,7 +72,7 @@ final class MasterMixologistTests: XCTestCase {
   }
 
   func testFinishShiftLeaveEarly() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let got = finishShift(minutesLeft: 120, remainingOrders: orders)
     let expected: [[String]] = []
     XCTAssertEqual(

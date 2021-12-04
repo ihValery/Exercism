@@ -42,12 +42,22 @@ makeWedges(needed: 3, limes: [])
 makeWedges(needed: 25, limes: ["small", "small", "large", "medium", "small"])
 makeWedges(needed: 0, limes: ["small", "large", "large", "medium", "small", "large", "large"])
 
-
-
-
 func finishShift(minutesLeft: Int, remainingOrders: [[String]]) -> [[String]] {
-   fatalError("Please implement the finishShift(minutesLeft:remainingOrders:) function")
+   var orders = remainingOrders
+   var currentTime = minutesLeft
+   
+   while !orders.isEmpty && currentTime > 0 {
+      currentTime -= Int(timeToPrepare(drinks: orders.removeFirst()))
+   }
+   
+   return orders
 }
+
+finishShift(minutesLeft: 5, remainingOrders: [["beer", "frozen drink", "shot"], ["fancy drink", "soda"], ["beer", "beer", "water"], ["mixed drink", "frozen drink"]])
+// => [["beer", "beer", "water"], ["mixed drink", "frozen drink"]]
+
+
+
 
 func orderTracker(orders: [(drink: String, time: String)]) -> (
    beer: (first: String, last: String, total: Int)?, soda: (first: String, last: String, total: Int)?
