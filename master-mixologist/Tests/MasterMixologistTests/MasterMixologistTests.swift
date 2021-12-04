@@ -25,28 +25,28 @@ final class MasterMixologistTests: XCTestCase {
   }
 
   func testMakeWedges() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let got = makeWedges(
       needed: 42, limes: ["small", "large", "large", "medium", "small", "large", "large"])
     XCTAssertEqual(got, 6, "You needto use 6 limes to fill the bin; you said you need \(got).")
   }
 
   func testMakeWedgesNoNeed() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let got = makeWedges(
       needed: 0, limes: ["small", "large", "large", "medium", "small", "large", "large"])
     XCTAssertEqual(got, 0, "Your bin was full, so you used 0 limes; you said you used \(got).")
   }
 
   func testMakeWedgesNoLimes() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let got = makeWedges(needed: 42, limes: [])
     XCTAssertEqual(
       got, 0, "You have no limes to cut up so you used 0 limes; you said you used \(got).")
   }
 
   func testMakeWedgesTooFewLimes() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let got = makeWedges(
       needed: 80, limes: ["small", "large", "large", "medium", "small", "large", "large"])
     XCTAssertEqual(

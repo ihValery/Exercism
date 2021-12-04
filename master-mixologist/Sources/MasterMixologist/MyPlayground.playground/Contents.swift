@@ -1,3 +1,5 @@
+import UIKit
+
 func timeToPrepare(drinks: [String]) -> Double {
    var counter = 0.0
    let times = ["beer": 0.5, "soda": 0.5, "water": 0.5,
@@ -10,27 +12,38 @@ func timeToPrepare(drinks: [String]) -> Double {
    return counter
 }
 
+timeToPrepare(drinks: [])
+timeToPrepare(drinks: ["beer", "frozen drink", "shot"])
+timeToPrepare(drinks: ["beer", "shot", "water", "fancy drink", "frozen drink", "fancy drink"])
+
 func makeWedges(needed: Int, limes: [String]) -> Int {
-   var limeWedges = 0
-   var limeCounter = 0
+   var limeCount = 0
+   var counter = 0
    
    for item in limes {
-      if limeWedges < needed {
+      if limeCount < needed {
          switch item {
          case "small":
-            limeWedges += 6
+            limeCount += 6
          case "medium":
-            limeWedges += 8
+            limeCount += 8
          case "large":
-            limeWedges += 10
+            limeCount += 10
          default:
             break
          }
-         limeCounter += 1
+         counter += 1
       }
    }
-   return limeCounter
+   return counter
 }
+
+makeWedges(needed: 3, limes: [])
+makeWedges(needed: 25, limes: ["small", "small", "large", "medium", "small"])
+makeWedges(needed: 0, limes: ["small", "large", "large", "medium", "small", "large", "large"])
+
+
+
 
 func finishShift(minutesLeft: Int, remainingOrders: [[String]]) -> [[String]] {
    fatalError("Please implement the finishShift(minutesLeft:remainingOrders:) function")
