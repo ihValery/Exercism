@@ -81,7 +81,7 @@ final class MasterMixologistTests: XCTestCase {
   }
 
   func testOrderTracker() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let orders = [
       (drink: "beer", time: "10:01"), (drink: "soda", time: "10:02"),
       (drink: "shot", time: "10:05"), (drink: "fancy drink", time: "10:06"),
@@ -98,7 +98,7 @@ final class MasterMixologistTests: XCTestCase {
   }
 
   func testOrderOneEach() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let orders = [
       (drink: "beer", time: "10:01"), (drink: "soda", time: "10:02"),
       (drink: "shot", time: "10:05"), (drink: "fancy drink", time: "10:06"),
@@ -113,7 +113,7 @@ final class MasterMixologistTests: XCTestCase {
   }
 
   func testOrderTrackerNoBeer() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let orders = [
       (drink: "soda", time: "10:02"), (drink: "shot", time: "10:05"),
       (drink: "fancy drink", time: "10:06"), (drink: "soda", time: "10:09"),
@@ -128,7 +128,7 @@ final class MasterMixologistTests: XCTestCase {
   }
 
   func testOrderTrackerNoSoda() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let orders = [
       (drink: "beer", time: "10:01"), (drink: "shot", time: "10:05"),
       (drink: "fancy drink", time: "10:06"), (drink: "beer", time: "10:15"),
@@ -144,7 +144,7 @@ final class MasterMixologistTests: XCTestCase {
   }
 
   func testOrderTrackerNils() throws {
-    try XCTSkipIf(true && !runAll)  // change true to false to run this test
+    try XCTSkipIf(false && !runAll)  // change true to false to run this test
     let orders = [(drink: String, time: String)]()
     let expectedBeers: DrinkTrack = nil
     let expectedSodas: DrinkTrack = nil
