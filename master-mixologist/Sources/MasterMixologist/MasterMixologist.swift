@@ -29,10 +29,10 @@ func makeWedges(needed: Int, limes: [String]) -> Int {
 
 func finishShift(minutesLeft: Int, remainingOrders: [[String]]) -> [[String]] {
    var orders = remainingOrders
-   var currentTime = Double(minutesLeft)
+   var currentMinutes = Double(minutesLeft)
    
-   while !orders.isEmpty && currentTime > 0 {
-      currentTime -= timeToPrepare(drinks: orders.removeFirst())
+   while !orders.isEmpty && currentMinutes > 0 {
+      currentMinutes -= timeToPrepare(drinks: orders.removeFirst())
    }
    
    return orders
@@ -40,22 +40,20 @@ func finishShift(minutesLeft: Int, remainingOrders: [[String]]) -> [[String]] {
 
 func orderTracker(orders: [(drink: String, time: String)]) -> (beer: (first: String, last: String, total: Int)?, soda: (first: String, last: String, total: Int)?) {
    
-   var beer: (first: String, last: String, total: Int)?
-   let ordersBeer = orders.filter { $0.drink == "beer" }
+   typealias OrderResult = (first: String, last: String, total: Int)
    
-   if ordersBeer.count != 0 {
-      beer = (first: ordersBeer.min { $0.time < $1.time }!.time,
-              last: ordersBeer.max { $0.time < $1.time }!.time,
-              total: ordersBeer.count)
+   var beer: OrderResult?
+   let ordersBeer = orders.filter { $0.drink == "beer" }.map { $0.time }.sorted()
+   
+   if let first = ordersBeer.first, let last = ordersBeer.last {
+      beer = (first: first, last: last, total: ordersBeer.count)
    }
 
-   var soda: (first: String, last: String, total: Int)?
-   let ordersSoda = orders.filter { $0.drink == "soda" }
+   var soda: OrderResult?
+   let ordersSoda = orders.filter { $0.drink == "soda" }.map { $0.time }.sorted()
    
-   if ordersSoda.count != 0 {
-      soda = (first: ordersSoda.min { $0.time < $1.time }!.time,
-              last: ordersSoda.max { $0.time < $1.time }!.time,
-              total: ordersSoda.count)
+   if let first = ordersSoda.first, let last = ordersSoda.last {
+      soda = (first: first, last: last, total: ordersSoda.count)
    }
       
    return (beer: beer, soda: soda)
