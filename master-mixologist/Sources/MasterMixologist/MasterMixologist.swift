@@ -1,13 +1,8 @@
 func timeToPrepare(drinks: [String]) -> Double {
-   var counter = 0.0
    let times = ["beer": 0.5, "soda": 0.5, "water": 0.5,
                 "shot": 1.0, "mixed drink": 1.5, "fancy drink": 2.5, "frozen drink": 3.0]
-   
-   for item in drinks {
-      counter += times[item] ?? 0
-   }
-   
-   return counter
+
+   return drinks.compactMap { times[$0] }.reduce(0, +)
 }
 
 func makeWedges(needed: Int, limes: [String]) -> Int {
