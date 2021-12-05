@@ -1,7 +1,7 @@
 func timeToPrepare(drinks: [String]) -> Double {
    let times = ["beer": 0.5, "soda": 0.5, "water": 0.5,
                 "shot": 1.0, "mixed drink": 1.5, "fancy drink": 2.5, "frozen drink": 3.0]
-   
+  
    return drinks.compactMap { times[$0] }.reduce(0, +)
 }
 
@@ -38,8 +38,8 @@ func orderTracker(orders: [(drink: String, time: String)]) -> (beer: (first: Str
    if let first = ordersBeer.first, let last = ordersBeer.last {
       beer = (first: first, last: last, total: ordersBeer.count)
    }
-   
-   var soda: OrderResult?
+
+  var soda: OrderResult?
    let ordersSoda = orders.filter { $0.drink == "soda" }.map { $0.time }.sorted()
    
    if let first = ordersSoda.first, let last = ordersSoda.last {
