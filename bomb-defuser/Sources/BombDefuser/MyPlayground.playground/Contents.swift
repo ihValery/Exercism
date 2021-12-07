@@ -1,39 +1,35 @@
 import UIKit
 
-let flip: (String, String, String) -> (String, String, String) = { ($1, $0, $2) }
+typealias wire = (String, String, String)
 
-flip("red", "yellow", "blue")
+let flip: (wire) -> wire = { ($0.1, $0.0, $0.2) }
+
+flip(("red", "yellow", "blue"))
 // => ("yellow", "red", "blue")
 
-let rotate: (String, String, String) -> (String, String, String) = { ($1, $2, $0) }
+let rotate: (wire) -> wire = { ($0.1, $0.2, $0.0) }
 
-rotate("red", "yellow", "blue")
+rotate(("red", "yellow", "blue"))
 // => ("yellow", "blue", "red")
 
 
-func makeShuffle(flipper: @escaping ((String, String, String)) -> (String, String, String),
-                 rotator: @escaping ((String, String, String)) -> (String, String, String)
-) -> (UInt8, (String, String, String)) -> (String, String, String) {
-   
-   let test: (UInt8, (String, String, String)) -> (String, String, String) = { number, typles in
-      var binary = String(number, radix: 2)
-      var newTyples = typles
-      print(binary)
-      for i in binary {
-         if i == "0" {
-            newTyples = flipper(newTyples)
-            print("0 - \(newTyples)")
-         } else if i == "1" {
-            newTyples = rotator(newTyples)
-            print("1 - \(newTyples)")
-         }
-      }
-      return newTyples
-   }
-   
-   return test
-}
+func makeShuffle(flipper: @escaping (wire) -> wire,
+                 rotator: @escaping (wire) -> wire) -> (UInt8, (wire)) -> wire {
+   { id, wireForDemining in
+      let binaryId = String(format: "%08d", Int(String(id, radix: 2)) ?? 0)
 
+      return binaryId.reversed().reduce(wireForDemining) { result, index in
+         index == "0" ? flipper(result) : rotator(result)
+      }
+      
+      //      var sequenceDemining = wireForDemining
+      //
+      //      for i in binaryId.reversed() {
+      //         sequenceDemining = i == "0" ? flipper(sequenceDemining) : rotator(sequenceDemining)
+      //      }
+      //      return sequenceDemining
+   }
+}
 let shuffler = makeShuffle(flipper: flip, rotator: rotate)
 // => (UInt8, (String, String, String)) -> (String, String, String)
 shuffler(155, ("red", "yellow", "blue"))

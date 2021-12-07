@@ -1,29 +1,18 @@
-let flip: (String, String, String) -> (String, String, String) = { ($1, $0, $2) }
+import Foundation
 
-let rotate: (String, String, String) -> (String, String, String) = { ($1, $2, $0) }
+typealias wire = (String, String, String)
 
-func makeShuffle(flipper: @escaping ((String, String, String)) -> (String, String, String),
-                 rotator: @escaping ((String, String, String)) -> (String, String, String)
-) -> (UInt8, (String, String, String)) -> (String, String, String) {
-   
-   let test: (UInt8, (String, String, String)) -> (String, String, String) = { number, typles in
-      var binary = String(number, radix: 2)
-      var newTyples = typles
-      print(binary)
-      for i in binary {
-         if i == "0" {
-            newTyples = flipper(newTyples)
-            print(newTyples)
-         } else if i == "1" {
-            newTyples = rotator(newTyples)
-            print(newTyples)
-         } else {
-            print("what?")
-         }
+let flip: (wire) -> wire = { ($0.1, $0.0, $0.2) }
+
+let rotate: (wire) -> wire = { ($0.1, $0.2, $0.0) }
+
+func makeShuffle(flipper: @escaping (wire) -> wire,
+                 rotator: @escaping (wire) -> wire) -> (UInt8, (wire)) -> wire {
+   { id, wireForDemining in
+      let binaryId = String(format: "%08d", Int(String(id, radix: 2)) ?? 0)
+
+      return binaryId.reversed().reduce(wireForDemining) { result, index in
+         index == "0" ? flipper(result) : rotator(result)
       }
-      
-      return newTyples
    }
-   
-   return test
 }

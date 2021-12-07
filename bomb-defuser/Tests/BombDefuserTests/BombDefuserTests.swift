@@ -8,7 +8,7 @@ final class BombDefuserTests: XCTestCase {
    
    func testFlip() {
       let expected = ("Dabba", "Yabba", "Doo")
-      let got = flip("Yabba", "Dabba", "Doo")
+      let got = flip(("Yabba", "Dabba", "Doo"))
       XCTAssertEqual(
          stringify(expected), stringify(got),
          "flip((\"Yabba\", \"Dabba\", \"Doo\"): Expected \(expected), got \(got)")
@@ -17,7 +17,7 @@ final class BombDefuserTests: XCTestCase {
    func testRotate() throws {
       try XCTSkipIf(false && !runAll)  // change true to false to run this test
       let expected = ("Dooby", "Doo", "Scooby")
-      let got = rotate("Scooby", "Dooby", "Doo")
+      let got = rotate(("Scooby", "Dooby", "Doo"))
       XCTAssertEqual(
          stringify(expected), stringify(got),
          "rotate((\"Scooby\", \"Dooby\", \"Doo\"): Expected \(expected), got \(got)")
