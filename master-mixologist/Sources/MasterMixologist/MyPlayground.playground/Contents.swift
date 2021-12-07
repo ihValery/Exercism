@@ -15,9 +15,9 @@ func makeWedges(needed: Int, limes: [String]) -> Int {
    let wedgesOneLime = ["small": 6, "medium": 8, "large": 10]
    var slicedWedges = 0
    
-   return limes.compactMap { wedgesOneLime[$0] }.filter { counter in
+   return limes.compactMap { wedgesOneLime[$0] }.filter {
       while slicedWedges < needed {
-         slicedWedges += counter
+         slicedWedges += $0
          return true
       }
       return false
@@ -25,8 +25,8 @@ func makeWedges(needed: Int, limes: [String]) -> Int {
 }
 
 //makeWedges(needed: 3, limes: [])
-makeWedges(needed: 25, limes: ["small", "small", "large", "medium", "small"])
-//makeWedges(needed: 0, limes: ["small", "large", "large", "medium", "small", "large", "large"])
+//makeWedges(needed: 25, limes: ["small", "small", "large", "medium", "small"])
+makeWedges(needed: 25, limes: ["small", "large", "large", "medium", "small", "large", "large"])
 
 func finishShift(minutesLeft: Int, remainingOrders: [[String]]) -> [[String]] {
    var orders = remainingOrders
