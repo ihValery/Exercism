@@ -24,7 +24,7 @@ final class BombDefuserTests: XCTestCase {
    }
    
    func testShuffle1() throws {
-      try XCTSkipIf(true && !runAll)  // change true to false to run this test
+      try XCTSkipIf(false && !runAll)  // change true to false to run this test
       let wires = ("Red", "Yellow", "Black")
       let shuffle = makeShuffle(flipper: flip, rotator: rotate)
       let expected = ("Yellow", "Black", "Red")
@@ -35,7 +35,7 @@ final class BombDefuserTests: XCTestCase {
    }
    
    func testShuffle2() throws {
-      try XCTSkipIf(true && !runAll)  // change true to false to run this test
+      try XCTSkipIf(false && !runAll)  // change true to false to run this test
       let wires = ("Purple", "Cyan", "Marigold")
       let shuffle = makeShuffle(flipper: flip, rotator: rotate)
       let expected = ("Marigold", "Cyan", "Purple")
@@ -46,7 +46,7 @@ final class BombDefuserTests: XCTestCase {
    }
    
    func testShuffle3() throws {
-      try XCTSkipIf(true && !runAll)  // change true to false to run this test
+      try XCTSkipIf(false && !runAll)  // change true to false to run this test
       let wires = ("Brown", "Orange", "White")
       let shuffle = makeShuffle(flipper: flip, rotator: rotate)
       let expected = ("Brown", "Orange", "White")
