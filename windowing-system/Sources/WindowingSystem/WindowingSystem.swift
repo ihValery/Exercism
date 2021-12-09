@@ -20,21 +20,23 @@ struct Position {
 
 class Window {
    var title: String = "New Window"
-   var screenSize: Size = .init(width: 800, height: 600)
-   var size: Size = .init()
-   var position: Position = .init()
+   var screenSize = Size(width: 800, height: 600)
+   var size = Size()
+   var position = Position()
    var contents: String?
    
    func resize(to size: Size) {
-      self.size.width = min(screenSize.width - position.x, max(1, size.width))
-      self.size.height = min(screenSize.height - position.y, max(1, size.height))
+      let width = max(1, min(screenSize.width - position.x, size.width))
+      let height = max(1, min(screenSize.height - position.y, size.height))
+      
+      self.size.resize(newWidth: width, newHeight: height)
    }
    
-   func move(to: Position) {
-      let x = min(screenSize.width - size.width, max(0, position.x))
-      let y = min(screenSize.height - size.height, max(0, position.y))
-      
-      position.moveTo(newX: x, newY: y)
+   func move(to position: Position) {
+      let x = max(0, min(screenSize.width - size.width, position.x))
+      let y = max(0, min(screenSize.height - size.height, position.y))
+
+      self.position.moveTo(newX: x, newY: y)
    }
    
    func update(title: String) {
