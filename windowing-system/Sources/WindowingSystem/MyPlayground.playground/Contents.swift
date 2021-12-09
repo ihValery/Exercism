@@ -24,15 +24,15 @@ struct Position {
    var x: Int = 0
    var y: Int = 0
    
-   mutating func moveTo(newX: Int, newY: Int) {
-      x = newX
-      y = newY
-   }
+//   mutating func moveTo(newX: Int, newY: Int) {
+//      x = newX
+//      y = newY
+//   }
 }
 
 var point = Position(x: 10, y: 20)
 // => Position
-point.moveTo(newX: 100, newY: -100)
+//point.moveTo(newX: 100, newY: -100)
 point.y
 // => -100
 
@@ -51,12 +51,13 @@ class Window {
    }
    
    func move(to position: Position) {
-      
-      
-      let x = max(0, min(screenSize.width - size.width, position.x))
-      let y = max(0, min(screenSize.height - size.height, position.y))
-
-      self.position.moveTo(newX: x, newY: y)
+      self.position.x = max(0, min(screenSize.width - size.width, position.x))
+      self.position.y = max(0, min(screenSize.height - size.height, position.y))
+//
+//      let x = max(0, min(screenSize.width - size.width, position.x))
+//      let y = max(0, min(screenSize.height - size.height, position.y))
+//
+//      self.position.moveTo(newX: x, newY: y)
    }
    
    func update(title: String) {
@@ -81,5 +82,12 @@ var mainWindow: Window {
    window.update(text: "This is the main window")
    return window
 }
-print(mainWindow.size)
-print(mainWindow.position)
+print("mainWindow - \(mainWindow.size)")
+print("mainWindow - \(mainWindow.position)")
+
+var copyMainWindow = mainWindow
+copyMainWindow.move(to: Position(x: 111, y: 111))
+copyMainWindow.resize(to: Size(width: 444, height: 333))
+
+print("copyMainWindow - \(copyMainWindow.size)")
+print("copyMainWindow - \(copyMainWindow.position)")
