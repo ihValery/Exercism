@@ -1,12 +1,24 @@
+import UIKit
+
 struct Size {
    var width: Int = 80
    var height: Int = 60
    
-   mutating func resize(newWidth: Int, newHeight: Int) {
-      width = newWidth
+   mutating func resize(newWidht: Int, newHeight: Int) {
+      width = newWidht
       height = newHeight
    }
 }
+
+let size1080x764 = Size(width: 1080, height: 764)
+// => Size
+var size1200x800 = size1080x764
+// => Size
+size1200x800.height
+size1200x800.resize(newWidht: 1200, newHeight: 800)
+size1200x800.height
+size1080x764.height
+// => 800
 
 struct Position {
    var x: Int = 0
@@ -17,6 +29,12 @@ struct Position {
       y = newY
    }
 }
+
+var point = Position(x: 10, y: 20)
+// => Position
+point.moveTo(newX: 100, newY: -100)
+point.y
+// => -100
 
 class Window {
    var title: String = "New Window"
