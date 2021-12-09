@@ -12,17 +12,17 @@ enum LogLevel: String {
    init(_ line: String) {
       
       switch line.prefix(5) {
-      case "[\(LogLevel.trace.rawValue)]":
+      case "[\(Self.trace.rawValue)]":
          self = .trace
-      case "[\(LogLevel.debug.rawValue)]":
+      case "[\(Self.debug.rawValue)]":
          self = .debug
-      case "[\(LogLevel.info.rawValue)]":
+      case "[\(Self.info.rawValue)]":
          self = .info
-      case "[\(LogLevel.warning.rawValue)]":
+      case "[\(Self.warning.rawValue)]":
          self = .warning
-      case "[\(LogLevel.error.rawValue)]":
+      case "[\(Self.error.rawValue)]":
          self = .error
-      case "[\(LogLevel.fatal.rawValue)]":
+      case "[\(Self.fatal.rawValue)]":
          self = .fatal
       default:
          self = .unknown
