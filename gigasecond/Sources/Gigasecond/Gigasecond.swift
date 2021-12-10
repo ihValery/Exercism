@@ -12,7 +12,7 @@ struct Gigasecond {
    
    init? (from: String) {
       guard let time = Self.dateFormatter.date(from: from) else { return nil }
-      
+
       let result = Date(timeInterval: pow(10, 9), since: time)
       description = Self.dateFormatter.string(from: result)
    }

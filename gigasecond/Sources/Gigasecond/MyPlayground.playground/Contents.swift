@@ -26,17 +26,22 @@ struct Gigasecond {
    let description: String
    
    static var dateFormatter: DateFormatter {
-      let df = DateFormatter()
-      df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-      df.timeZone = TimeZone(abbreviation: "GMT")
-      return df
+      let date = DateFormatter()
+      date.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+      date.timeZone = TimeZone(abbreviation: "GMT")
+      return date
    }
    
    init? (from: String) {
       guard let time = Self.dateFormatter.date(from: from) else { return nil }
+      let gsTime = Date(timeInterval: pow(10, 9), since: time)
+      var gigasecond: TimeInterval {
+         let gsDec = pow(10, 9)
+         let gsInt = NSDecimalNumber(decimal: gsDec).intValue
+         return TimeInterval(gsInt)
+      }
       
-      let result = Date(timeInterval: pow(10, 9), since: time)
-      description = Self.dateFormatter.string(from: result)
+      description = Self.dateFormatter.string(from: gsTime)
    }
 }
 
