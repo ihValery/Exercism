@@ -1,31 +1,29 @@
 import UIKit
 
-let old = [ 1: [ "A" ] ]
-let expected =  ["a": 1 ]
-//let results = ETL.transform(old)
+let old = [ 1: ["A", "E"]]
+let new = ["e": 1, "a": 1]
 
-enum Answer: String {
-   case question = "Sure."
-   case yellAtHim = "Whoa, chill out!"
-   case yellQuestion = "Calm down, I know what I'm doing!"
-   case withoutAnything = "Fine. Be that way!"
-   case anythingElse = "Whatever."
+
+
+struct ETL {
+   static func transform(_ input: [Int: [String]]) -> [String: Int] {
+      input.reduce(into: [:]) { new, old in
+         old.value.forEach { letter in
+            new[letter.lowercased()] = old.key
+         }
+      }
+   }
 }
 
-func hey(_ input: String) -> String {
-   var message: Answer = .anythingElse
-   
-   if input.trimmingCharacters(in: .whitespaces).isEmpty {
-      message = .withoutAnything
-   }
-   if input.uppercased() == input && (input.rangeOfCharacter(from: .letters) != nil) {
-      message = .yellAtHim
-   }
-   if input.hasSuffix("?") {
-      message = .question
-   }
-   
-   return message.rawValue
-}
+ETL.transform(old)
 
-hey("HE")
+let oldSystem = [ 1: [ "A", "E", "I", "O", "U", "L", "N", "R", "S", "T" ],
+                  2: [ "D", "G" ],
+                  3: [ "B", "C", "M", "P" ],
+                  4: [ "F", "H", "V", "W", "Y" ],
+                  5: [ "K"],
+                  8: [ "J", "X" ],
+                  10: [ "Q", "Z" ]]
+
+
+ETL.transform(oldSystem)
