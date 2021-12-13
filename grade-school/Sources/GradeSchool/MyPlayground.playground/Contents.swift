@@ -1,3 +1,6 @@
+import UIKit
+
+
 struct GradeSchool {
    var roster: [Int: [String]] = [:]
    
@@ -10,4 +13,13 @@ struct GradeSchool {
    func studentsInGrade(_ grade: Int) -> [String] {
       roster[grade, default: []]
    }
+   
 }
+
+var school181 = GradeSchool()
+school181.addStudent("One", grade: 1)
+school181.addStudent("Two", grade: 3)
+school181.addStudent("Three", grade: 2)
+school181.roster
+school181.studentsInGrade(1)
+//school181.sortedRoster
