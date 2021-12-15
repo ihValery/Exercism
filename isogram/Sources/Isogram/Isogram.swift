@@ -1,12 +1,4 @@
 func isIsogram(_ input: String) -> Bool {
-    var result = Array(input.lowercased())
-    
-    for char in result {
-        result.removeFirst()
-        if result.contains(char) && char != " " && char != "-" {
-            print(char)
-            return false
-        }
-    }
-    return true
+    var onlyLetters = input.lowercased().filter { $0.isLetter }
+    return onlyLetters.count == Set(onlyLetters).count
 }
