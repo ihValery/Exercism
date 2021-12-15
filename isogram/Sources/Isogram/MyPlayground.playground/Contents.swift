@@ -1,3 +1,5 @@
+import UIKit
+
 func isIsogram(_ input: String) -> Bool {
     var result = Array(input.lowercased())
     
@@ -10,3 +12,10 @@ func isIsogram(_ input: String) -> Bool {
     }
     return true
 }
+
+isIsogram("ssffo")
+isIsogram("isogram")
+isIsogram("Alphabet")
+isIsogram("Hjelmqvist-Gryb-Zock-Pfund-Wax")
+
+//var test
