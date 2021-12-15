@@ -1,21 +1,23 @@
 import UIKit
 
 struct Hamming {
-    static func compute(_ one: String, against: String) -> Int? {
-        guard one.count == against.count else { return nil }
+    static func compute(_ lhs: String, against rhs: String) -> Int? {
+        guard lhs.count == rhs.count else { return nil }
 //        guard one != "" else { return 0 }
 
-        var oneArr = one.map { $0 }
-        var twoArr = against.map { $0 }
-        var hammingDistance = 0
+        return zip(lhs, rhs).filter { $0 != $1 }.count
         
-        for index in oneArr.indices {
-            if oneArr[index] != twoArr [index] {
-                hammingDistance += 1
-            }
-        }
-        
-        return hammingDistance
+//        var oneArr = lhs.map { $0 }
+//        var twoArr = rhs.map { $0 }
+//        var hammingDistance = 0
+//
+//        for index in oneArr.indices {
+//            if oneArr[index] != twoArr [index] {
+//                hammingDistance += 1
+//            }
+//        }
+//
+//        return hammingDistance
     }
 }
 
