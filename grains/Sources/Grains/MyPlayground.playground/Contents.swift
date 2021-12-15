@@ -22,3 +22,6 @@ struct Grains {
         return pow(2.0, Double(n-1))
     }
 }
+
+let grain = try Grains.square(64)
+let grains = Grains.total
