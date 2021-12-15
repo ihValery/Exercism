@@ -5,19 +5,16 @@ struct Hamming {
         guard lhs.count == rhs.count else { return nil }
 //        guard one != "" else { return 0 }
 
-        return zip(lhs, rhs).filter { $0 != $1 }.count
+//        return zip(lhs, rhs).filter { $0 != $1 }.count
         
-//        var oneArr = lhs.map { $0 }
-//        var twoArr = rhs.map { $0 }
-//        var hammingDistance = 0
-//
-//        for index in oneArr.indices {
-//            if oneArr[index] != twoArr [index] {
-//                hammingDistance += 1
-//            }
-//        }
-//
-//        return hammingDistance
+        var hammingDistance = 0
+        for index in 0..<lhs.count {
+            if Array(lhs)[index] != Array(rhs)[index] {
+                hammingDistance += 1
+            }
+        }
+
+        return hammingDistance
     }
 }
 
