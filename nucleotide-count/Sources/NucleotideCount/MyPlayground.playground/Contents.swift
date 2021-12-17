@@ -35,3 +35,5 @@ tt.count("T")
 
 let nucleotides: [Character] = ["A", "C", "G", "T"]
 "AGCTCATTCTG".allSatisfy { nucleotides.contains($0) }
+
+Set("AGCTCATTCTG").isSubset(of: "ACGT")
