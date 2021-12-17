@@ -3,7 +3,8 @@ struct DNA {
     
     init? (strand: String) {
         let nucleotides = ["A", "C", "G", "T"]
-        guard strand.allSatisfy({ nucleotides.contains( String($0) ) }) else { return nil }
+        guard Set(strand).isSubset(of: "ATCG") else { return nil }
+//        guard strand.allSatisfy({ nucleotides.contains( String($0) ) }) else { return nil }
         
         self.strand = strand
     }
