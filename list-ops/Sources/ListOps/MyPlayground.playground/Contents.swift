@@ -73,9 +73,8 @@ foldRight(["e", "x", "e", "r", "c", "i", "s", "m"], accumulated: "!", combine: +
 
 func reverse<T>(_ input: [T]) -> [T] {
     var result: [T] = []
-    for index in input.indices {
-        let revIndex = (input.count - 1) - index
-        result.append(input[revIndex])
+    for item in input {
+        result.insert(item, at: 0)
     }
     return result
 }
