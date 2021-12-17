@@ -7,8 +7,8 @@ import UIKit
  length (учитывая список, возвращает общее количество элементов в нем);
  map (дана функция и список, возвращает список результатов применения функции(item) ко всем элементам);
  foldl (дана функция, список и начальный аккумулятор, сложить (уменьшить) каждый элемент в аккумулятор слева, используя функцию function(accumulator, item));
- 
  foldr (дана функция, список и начальный аккумулятор, складываем (уменьшаем) каждый элемент в аккумулятор справа с помощью функции(item, accumulator));
+ 
  reverse (учитывая список, вернуть список со всеми исходными элементами, но в обратном порядке);
  */
 
@@ -58,13 +58,24 @@ func foldLeft<T>(_ input: [T], accumulated: T, combine: (T, T) -> T) -> T {
     return result
 }
 
-append([], [1, 2, 3, 4])
-append(["1", "2"], ["3"])
-concat(["1", "2"], ["3"])
-concat([1, 2], [3], [], [4, 5, 6])
-filter([1, 2, 3, 4]) { $0.isMultiple(of: 2) }
-length([1, 2, 3, 4])
-map([1, 3, 5, 7]) { $0 + 1 }
-//foldLeft([1, 2], accumulated: 7, combine: -)
-print(foldLeft([1, 2], accumulated: 4) { $0 + $1 })
-print(foldLeft([2, 5], accumulated: 5, combine: /))
+func foldRight<T>(_ input: [T], accumulated: T, combine: (T, T) -> T) -> T {
+    var result = accumulated
+    for index in input.indices {
+        let revIndex = (input.count - 1) - index
+        print(input[revIndex])
+        result = combine(input[revIndex], result)
+    }
+    return result
+}
+
+foldRight(["e", "x", "e", "r", "c", "i", "s", "m"], accumulated: "!", combine: +)
+//"exercism!"
+
+func reverse<T>(_ input: [T]) -> [T] {
+    var result: [T] = []
+    for index in input.indices {
+        let revIndex = (input.count - 1) - index
+        result.append(input[revIndex])
+    }
+    return result
+}
