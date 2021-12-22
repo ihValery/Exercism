@@ -16,48 +16,51 @@ func mergeSort(_ input: [Int]) -> [Int] {
    return merge(leftArray, rightArray)
 }
 
+//func merge(_ lhs: [Int], _ rhs: [Int]) -> [Int] {
+//   var leftIdx = lhs.startIndex
+//   var rightIdx = rhs.startIndex
+//
+//   var result: [Int] = []
+//
+//   while leftIdx < lhs.count && rightIdx < rhs.count {
+//      if lhs[leftIdx] <= rhs[rightIdx] {
+//         result.append(lhs[leftIdx])
+//         leftIdx += 1
+//      } else {
+//         result.append(rhs[rightIdx])
+//         rightIdx += 1
+//      }
+//   }
+//
+//   while leftIdx < lhs.count {
+//      result.append(lhs[leftIdx])
+//      leftIdx += 1
+//   }
+//
+//   while rightIdx < rhs.count {
+//      result.append(rhs[rightIdx])
+//      rightIdx += 1
+//   }
+//
+//   return result
+//}
+
 func merge(_ lhs: [Int], _ rhs: [Int]) -> [Int] {
-   var leftIdx = lhs.startIndex
-   var rightIdx = rhs.startIndex
+   var left = lhs
+   var rigth = rhs
    
    var result: [Int] = []
    
-   while leftIdx < lhs.endIndex && rightIdx < rhs.endIndex {
-      if lhs[leftIdx] <= rhs[rightIdx] {
-         result.append(lhs[leftIdx])
-         leftIdx += 1
+   while !left.isEmpty && !rigth.isEmpty {
+      if left.first! <= rigth.first! {
+         result.append(left.first!)
+         left.removeFirst()
       } else {
-         result.append(rhs[rightIdx])
-         rightIdx += 1
+         result.append(rigth.first!)
+         rigth.removeFirst()
       }
    }
    
-   while leftIdx < lhs.endIndex {
-      result.append(lhs[leftIdx])
-      leftIdx += 1
-   }
-   
-   while rightIdx < rhs.endIndex {
-      result.append(rhs[rightIdx])
-      rightIdx += 1
-   }
-   
-   return result
+   return result + left + rigth
 }
-
 mergeSort(array2)
-
-//while leftIdx < lhs.endIndex {
-//   result.append(lhs[leftIdx])
-//   leftIdx += 1
-//}
-//
-//while rightIdx < rhs.endIndex {
-//   result.append(rhs[rightIdx])
-//   rightIdx += 1
-//}
-//
-//return result
-//}
-//
-//mergeSort(array2)
