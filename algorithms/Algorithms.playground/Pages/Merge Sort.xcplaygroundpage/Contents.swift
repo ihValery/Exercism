@@ -46,3 +46,18 @@ func merge(_ lhs: [Int], _ rhs: [Int]) -> [Int] {
 }
 
 mergeSort(array2)
+
+//while leftIdx < lhs.endIndex {
+//   result.append(lhs[leftIdx])
+//   leftIdx += 1
+//}
+//
+//while rightIdx < rhs.endIndex {
+//   result.append(rhs[rightIdx])
+//   rightIdx += 1
+//}
+//
+//return result
+//}
+//
+//mergeSort(array2)
