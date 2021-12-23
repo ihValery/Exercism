@@ -53,11 +53,9 @@ func merge(_ lhs: [Int], _ rhs: [Int]) -> [Int] {
    
    while !left.isEmpty && !rigth.isEmpty {
       if left.first! <= rigth.first! {
-         result.append(left.first!)
-         left.removeFirst()
+         result.append(left.removeFirst())
       } else {
-         result.append(rigth.first!)
-         rigth.removeFirst()
+         result.append(rigth.removeFirst())
       }
    }
    
